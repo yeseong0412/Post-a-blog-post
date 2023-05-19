@@ -4,7 +4,6 @@
 - 블로그에 글을 쓰면서 하나의 블로그에 올리지 않고 다른 블로그에도 글을 올리는 사람이라면 복사 붙혀넣기 하는게 귀찮아 한번에 글을 올리는 프로그램을 만들어 보았습니다.
 - Pycharm을 이용하여 개발하였고, [블로그](https://blueshare.tistory.com/437)글들의 도움을 받았습니다.
 - 아직 개발중이라 오류가 있을 수 있습니다.(파이썬 전문 개발자가 아니라 양해 부탁드립니다.)
----
 ## 사용법
 1. [티스토리](https://www.tistory.com/guide/api/manage/register) , [Blogger](https://ux.stories.pe.kr/281) 2가지 링크에 들어가서 토큰을 발급받습니다. 
 2. YOUR_TISTORY_ACCESS_TOKEN, YOUR_TISTORY_BLOG_NAME 에 알맞은 값을 넣고 YOUR_BLOGGER_API_KEY 에도 알맞은 값을 넣어줍니다.
