@@ -17,13 +17,17 @@ def post_to_tistory(title, content, tags):
         'tag': ','.join(tags)
     }
 
-    # API 요청 보내기
-    response = requests.post(api_url, data=data)
-    if response.status_code == 200:
-        print('티스토리에 글이 성공적으로 작성되었습니다.')
-    else:
-        print('티스토리에 글 작성 실패:', response.text)
+    try:
+        # API 요청 보내기
+        response = requests.post(api_url, data=data)
+        response.raise_for_status()  # Raise an exception for non-200 status codes
 
+        if response.status_code == 200:
+            print('티스토리에 글이 성공적으로 작성되었습니다.')
+        else:
+            print('티스토리에 글 작성 실패:', response.text)
+    except requests.exceptions.RequestException as e:
+        print('티스토리 API 요청 에러:', e)
 
 def post_to_blogger(title, content, labels):
     # Blogger API 엔드포인트와 인증 정보 설정
@@ -45,13 +49,19 @@ def post_to_blogger(title, content, labels):
         'content': content,
         'labels': labels
     }
+    try:
+        # API 요청 보내기
+        response = requests.post(api_url, headers=headers, json=data, params={'key': api_key})
+        response.raise_for_status()  # Raise an exception for non-200 status codes
 
-    # API 요청 보내기
-    response = requests.post(api_url, headers=headers, json=data, params={'key': api_key})
-    if response.status_code == 200:
-        print('Blogger에 글이 성공적으로 작성되었습니다.')
-    else:
-        print('Blogger에 글 작성 실패:', response.text)
+        if response.status_code == 200:
+            print('Blogger에 글이 성공적으로 작성되었습니다.')
+        else:
+            print('Blogger에 글 작성 실패:', response.text)
+    except requests.exceptions.RequestException as e:
+        print('Blogger API 요청 에러:', e)
+
+
 
 
 # 티스토리에 글 작성
